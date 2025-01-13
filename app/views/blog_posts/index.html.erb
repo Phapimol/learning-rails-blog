@@ -3,6 +3,15 @@
 <% @blog_posts.each do |blog_post| %>
     <div>
         <h2><%= link_to blog_post.title, blog_post%></h2>
-        <p><%= blog_post.body %></p>
-    </
+        <%if blog_post.draft? %>
+            <p class="bg-gray-200"><%= "Draft:" + blog_post.body %></p>
+        <%elsif blog_post.scheduled? %>
+            <p class="bg-blue-200"><%= "Scheduled:" + blog_post.body %></p>
+        <%else%>
+            <p><%= blog_post.body %></p>
+        <% end %>
+
+       
+        
+    </div>
 <% end %>
